@@ -1,0 +1,84 @@
+<!-- TOP NAV + FULL-SCREEN MENU. Menu links are defined in header.component.ts -->
+<header class="nav">
+  <!-- announcement ticker (text is repeated automatically) -->
+  <div class="ann"><a href="/contact" data-mq="left" data-speed="34s"><span>Free brand review for businesses in Nagpur and Kolkata</span><span>Strategy. Content. Media. Web. Search. PR.</span><span>One senior team for your whole brand</span></a></div>
+  <div class="wrap">
+    <!-- TWO LOGOS side by side: 1) symbol  2) "phian INFOTEC" wordmark. Files: src/assets/images/logo-mark.png and logo-wordmark.png -->
+    <a class="logo logo-pair" href="/" aria-label="Phian Infotec home">
+      @if (!logoBad) {
+        <img class="logo-mark" src="/assets/images/logo-mark.png" alt="Phian symbol" height="84" (error)="logoBad = true">
+        <span class="logo-sep" aria-hidden="true"></span>
+        <img class="logo-word" src="/assets/images/logo-wordmark.png" alt="Phian Infotec" height="64" (error)="logoBad = true">
+        <span class="logo-rot" aria-hidden="true"><i>#</i><span class="lr"><b>Brand</b></span></span>
+      } @else {
+        <svg width="48" height="48" viewBox="0 0 34 34" aria-hidden="true">
+          <circle cx="17" cy="17" r="13" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="3"/>
+          <path d="M17 4a13 13 0 1 1-12.4 9" fill="none" stroke="#FFC21A" stroke-width="3.2" stroke-linecap="round"/>
+          <circle cx="17" cy="17" r="4.2" fill="#FFC21A"/>
+        </svg>Phian
+      }
+    </a>
+    <nav class="tn" aria-label="Primary">
+      <div class="tn-i"><a href="/" [class.tn-act]="path === '/'">Home</a></div>
+      <div class="tn-i has-dd"><a href="/what-we-do" [class.tn-act]="path === '/what-we-do' || inGroup(PIL)">What we do</a>
+        <div class="dd"><div class="dd-in">@for (l of PIL; track l[1]) { <a [attr.href]="l[1]">{{ l[0] }}</a> }</div></div></div>
+      <div class="tn-i has-dd"><a href="/industries" [class.tn-act]="path === '/industries' || inGroup(SEC)">Industries</a>
+        <div class="dd"><div class="dd-in">@for (l of SEC; track l[1]) { <a [attr.href]="l[1]">{{ l[0] }}</a> }</div></div></div>
+      <div class="tn-i"><a href="/work" [class.tn-act]="inWork()">Work</a></div>
+      <div class="tn-i"><a href="/projects-clients" [class.tn-act]="path === '/projects-clients'">Projects &amp; Clients</a></div>
+      <div class="tn-i has-dd"><a href="/about" [class.tn-act]="inGroup(OFF) || path === '/about'">About</a>
+        <div class="dd"><div class="dd-in"><a href="/about">About Phian</a>@for (l of OFF; track l[1]) { <a [attr.href]="l[1]">{{ l[0] }}</a> }</div></div></div>
+      <div class="tn-i"><a href="/insights" [class.tn-act]="inInsights()">Insights</a></div>
+    </nav>
+    <a class="btn btn-gold hide-sm" href="/contact">Book a brand review</a>
+    <button class="menu-btn" [attr.aria-expanded]="open" aria-controls="ov" (click)="toggle()">
+      <span class="mlabel">{{ open ? 'Close' : 'Menu' }}</span>
+    </button>
+  </div>
+</header>
+
+<div id="ov" class="ov" [class.on]="open" [attr.aria-hidden]="!open">
+  <div class="wrap ov-in">
+    <nav aria-label="Main">
+      <ol class="ov-main">
+        @for (l of NAV; track l[1]; let i = $index) {
+          <li [style.--i]="i" [class.open]="exp === l[1]">
+            <a [attr.href]="l[1]" [attr.aria-current]="path === l[1] ? 'page' : null" [attr.tabindex]="open ? 0 : -1"
+               [attr.aria-expanded]="subFor(l[1]) ? exp === l[1] : null" (click)="onMain($event, l[1])"><small>{{ num(i) }}</small><span class="t">{{ l[0] }}</span>@if (subFor(l[1])) { <i class="chev" aria-hidden="true"></i> }</a>
+            <!-- phone only: opens when the item above is tapped -->
+            @if (subFor(l[1]); as sub) {
+              <div class="ov-sub" [attr.aria-hidden]="exp !== l[1]">
+                <a class="all" [attr.href]="l[1]" [attr.tabindex]="open && exp === l[1] ? 0 : -1">Open {{ l[0] }}</a>
+                @for (x of sub; track x[1]) { <a [attr.href]="x[1]" [attr.tabindex]="open && exp === l[1] ? 0 : -1">{{ x[0] }}</a> }
+                @if (l[1] === '/about') {
+                  <a href="tel:+917709809577" [attr.tabindex]="open && exp === l[1] ? 0 : -1">+91 77098 09577</a>
+                  <a href="mailto:info&#64;phianinfotec.com" [attr.tabindex]="open && exp === l[1] ? 0 : -1">info&#64;phianinfotec.com</a>
+                  <a href="tel:+917972100822" [attr.tabindex]="open && exp === l[1] ? 0 : -1">+91 79721 00822</a>
+                  <a href="mailto:devghosh&#64;phianinfotec.com" [attr.tabindex]="open && exp === l[1] ? 0 : -1">devghosh&#64;phianinfotec.com</a>
+                }
+              </div>
+            }
+          </li>
+        }
+      </ol>
+    </nav>
+    <div class="ov-cols">
+      <div>
+        <h4>What we do</h4>
+        @for (l of PIL; track l[1]) { <a [attr.href]="l[1]" [attr.tabindex]="open ? 0 : -1">{{ l[0] }}</a> }
+      </div>
+      <div>
+        <h4>Industries</h4>
+        @for (l of SEC; track l[1]) { <a [attr.href]="l[1]" [attr.tabindex]="open ? 0 : -1">{{ l[0] }}</a> }
+      </div>
+      <div>
+        <h4>Company</h4>
+        @for (l of OFF; track l[1]) { <a [attr.href]="l[1]" [attr.tabindex]="open ? 0 : -1">{{ l[0] }}</a> }
+        <a href="tel:+917709809577" [attr.tabindex]="open ? 0 : -1">+91 77098 09577</a>
+        <a href="mailto:info&#64;phianinfotec.com" [attr.tabindex]="open ? 0 : -1">info&#64;phianinfotec.com</a>
+        <a href="tel:+917972100822" [attr.tabindex]="open ? 0 : -1">+91 79721 00822</a>
+        <a href="mailto:devghosh&#64;phianinfotec.com" [attr.tabindex]="open ? 0 : -1">devghosh&#64;phianinfotec.com</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<!-- PAGE: projects-clients  |  Projects (case studies) + all clients in one page -->
+<main id="main">
+
+<section class="ink phero"><div class="wrap"><p class="crumb"><a href="/">Home</a> / Projects and Clients</p>
+<h1>Our projects and clients.</h1>
+<p class="lead">The projects we have delivered and the people who trust us with their brands, in one place.</p>
+<div class="btn-row"><a class="btn btn-gold" href="#projects">Projects</a><a class="btn btn-line" href="#clients">Clients</a></div></div></section>
+
+<!-- ============ PROJECTS ============ -->
+<section id="projects"><div class="wrap">
+<h2>Projects.</h2>
+<p class="lead">Selected projects across real estate, healthcare, hospitality and logistics. Open any project for the full case study.</p>
+<div class="workgrid"><a class="case" href="/work-nsh-hospital" data-sector="healthcare"><div class="shot has-img"><img src="/assets/images/work-nsh.jpg" alt="NSH Critical Care Hospital building" loading="lazy"></div><div class="body"><small class="cs">Critical care hospital and diagnostic centre</small><h3>NSH Hospital</h3><p>PR, branding, positioning and digital marketing for NSH Critical Care Hospital and Diagnostic Centre.</p><div class="tags"><span class="tag">PR</span> <span class="tag">Branding</span> <span class="tag">Positioning</span> <span class="tag">Digital Marketing</span></div></div></a><a class="case" href="/work-max-healthcare" data-sector="healthcare"><div class="shot has-img"><img src="/assets/images/work-max.jpg" alt="Max Super Speciality Hospital building" loading="lazy"></div><div class="body"><small class="cs">Hospital brand</small><h3>Max Healthcare</h3><p>PR, branding, positioning and digital marketing for Max Healthcare.</p><div class="tags"><span class="tag">PR</span> <span class="tag">Branding</span> <span class="tag">Positioning</span> <span class="tag">Digital Marketing</span></div></div></a><a class="case" href="/work-baidyanath" data-sector="healthcare"><div class="shot has-img"><img src="/assets/images/work-baidyanath.jpg" alt="Baidyanath factory and gardens" loading="lazy"></div><div class="body"><small class="cs">Ayurveda brand</small><h3>Baidyanath</h3><p>PR, branding, positioning and digital marketing for Baidyanath Asli Ayurved.</p><div class="tags"><span class="tag">PR</span> <span class="tag">Branding</span> <span class="tag">Positioning</span> <span class="tag">Digital Marketing</span></div></div></a><a class="case" href="/work-haldirams" data-sector="hospitality-fnb"><div class="shot has-img"><img src="/assets/images/work-haldirams.jpg" alt="Haldiram's factory price outlet storefront" loading="lazy"></div><div class="body"><small class="cs">Food and snacks brand</small><h3>Haldiram's</h3><p>PR, branding, positioning and digital marketing for Haldiram's.</p><div class="tags"><span class="tag">PR</span> <span class="tag">Branding</span> <span class="tag">Positioning</span> <span class="tag">Digital Marketing</span></div></div></a>
+<a class="case" href="/work-swetal-logistics-park" data-sector="b2b-industrial"><div class="shot has-img"><img src="/assets/images/logistics.jpg" alt="Swetal Logistics Park project" loading="lazy"></div><div class="body"><small class="cs">Central India logistics park</small><h3>Swetal Logistics Park</h3><p>National demand generation and a brochure rebuild for a logistics park.</p><div class="tags"><span class="tag">Brand</span> <span class="tag">Content</span> <span class="tag">Media</span> <span class="tag">Web</span></div></div></a>
+
+<a class="case" href="/work-samira-habitats" data-sector="real-estate"><div class="shot has-img"><img src="/assets/images/samira-height.jpg" alt="Samira Habitats plotted development on the Konkan coast" loading="lazy"></div><div class="body"><small class="cs">Konkan coast plotted development</small><h3>Samira Habitats</h3><p>Social media, a pitch deck and AI video for a plotted development on the Konkan coast.</p><div class="tags"><span class="tag">Content</span> <span class="tag">AI video</span> <span class="tag">PR</span></div></div></a>
+<a class="case" href="/work-mukunda-group" data-sector="real-estate"><div class="shot has-img"><img src="/assets/images/work-5.jpeg" alt="Mukunda Group project" loading="lazy"></div><div class="body"><small class="cs">Diversified group and its plotted projects</small><h3>Mukunda Group</h3><p>Group logo redesign, brand palette and plotted project portfolio for a group spanning transport, logistics, steel and real estate.</p><div class="tags"><span class="tag">Brand</span> <span class="tag">Search</span> <span class="tag">PR</span></div></div></a>
+
+
+</div>
+</div></section>
+
+<!-- ============ CLIENTS (real logo files, grouped under headings: healthcare, real estate, education, consumer, corporate) ============ -->
+<section id="clients" class="white"><div class="wrap">
+<h2>Our clients.</h2>
+<p class="lead">Brands that trust Phian to build, run and grow them.</p>
+<div class="cg-jump" role="navigation" aria-label="Client groups">
+  @for (g of groups; track g.id) { <a [attr.href]="'#cl-' + g.id" (click)="jump($event, g.id)">{{ g.title }}</a> }
+</div>
+@for (g of groups; track g.id) {
+<div class="cg" [attr.id]="'cl-' + g.id">
+  <div class="cg-h"><h3>{{ g.title }}</h3><span>{{ g.clients.length }} logos</span></div>
+  <div class="cg-grid">
+    @for (c of g.clients; track c.img) {
+    <div class="cg-cell" [attr.title]="c.name"><app-brand-logo [c]="c" /></div>
+    }
+  </div>
+</div>
+}
+<p class="pc-count">And many more.</p>
+<p class="pc-more"><a class="btn btn-gold" href="/contact">Start your project with us</a></p>
+</div></section>
+
+</main>

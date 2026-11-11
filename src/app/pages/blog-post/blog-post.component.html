@@ -1,0 +1,27 @@
+<!-- PAGE: blog post  |  Text of each post is in src/app/core/blog.data.ts -->
+<main id="main">
+@if (post) {
+  <section class="ink phero"><div class="wrap article">
+    <p class="crumb"><a href="/">Home</a> / <a href="/insights">Insights</a> / {{ post.category }}</p>
+    <h1 style="font-size:clamp(2.2rem,4.5vw,3.4rem)">{{ post.title }}</h1>
+    <p class="lead">{{ post.summary }}</p>
+    <div class="byline"><div class="avatar" style="background:var(--marigold);color:var(--ink)">PH</div><div><b>Phian</b>{{ post.category }}, {{ post.date }}. {{ post.readTime }}</div></div>
+  </div></section>
+  <section class="white"><div class="wrap">
+    <figure class="post-cover article"><img [src]="post.image" [alt]="post.imageAlt" width="1376" height="768"></figure>
+    <article class="article" [innerHTML]="post.body"></article>
+  </div></section>
+  <section><div class="wrap"><h2>Keep reading.</h2>
+    <div class="posts">
+      @for (o of others; track o.slug) {
+        <a class="post" [attr.href]="'/blog/' + o.slug"><div class="pimg"><img [src]="o.image" alt="" loading="lazy"></div><small>{{ o.category }}, {{ o.date }}</small><h3>{{ o.title }}</h3></a>
+      }
+    </div>
+    <div class="btn-row"><a class="btn btn-line" href="/insights">Back to all insights</a><a class="btn btn-gold" href="/contact">Book a brand review</a></div>
+  </div></section>
+} @else {
+  <section class="ink phero"><div class="wrap"><p class="crumb"><a href="/">Home</a> / <a href="/insights">Insights</a></p>
+    <h1>We could not find that post.</h1><p class="lead">It may have moved. Head back to Insights to see everything we have written.</p>
+    <div class="btn-row"><a class="btn btn-gold" href="/insights">Go to Insights</a></div></div></section>
+}
+</main>

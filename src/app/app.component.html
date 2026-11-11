@@ -1,0 +1,27 @@
+<!-- preloader (shown once per session) -->
+<div class="pre" id="pre" aria-hidden="true">
+  <div class="pre-in">
+    <img class="pre-logo" src="/assets/images/logo-mark.png" alt="" height="110">
+    <div class="pre-row"><span class="pre-t">Building brands, 360 degrees.</span></div>
+    <div class="pre-bar"><i></i></div>
+  </div>
+</div>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<app-header />
+
+<!-- Every page component (src/app/pages/*) is rendered here -->
+<div id="page">
+  <router-outlet />
+</div>
+
+<app-footer />
+
+<!-- effects layers (page transition, scroll progress, custom cursor) -->
+<div class="curtain" #curtain></div>
+<div class="prog" #bar></div>
+<div class="cur" #cur>
+  <div class="cr" #ring><span>View</span></div>
+  <div class="cd" #dot></div>
+</div>

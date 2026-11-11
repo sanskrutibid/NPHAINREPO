@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2A2766"/><stop offset="1" stop-color="#6A5CFF"/></linearGradient></defs>
+<rect width="800" height="500" fill="url(#g)"/>
+<g fill="none" stroke="rgba(255,255,255,.09)" stroke-width="1"><path d="M0 0V500"/><path d="M50 0V500"/><path d="M100 0V500"/><path d="M150 0V500"/><path d="M200 0V500"/><path d="M250 0V500"/><path d="M300 0V500"/><path d="M350 0V500"/><path d="M400 0V500"/><path d="M450 0V500"/><path d="M500 0V500"/><path d="M550 0V500"/><path d="M600 0V500"/><path d="M650 0V500"/><path d="M700 0V500"/><path d="M750 0V500"/><path d="M800 0V500"/><path d="M0 0H800"/><path d="M0 50H800"/><path d="M0 100H800"/><path d="M0 150H800"/><path d="M0 200H800"/><path d="M0 250H800"/><path d="M0 300H800"/><path d="M0 350H800"/><path d="M0 400H800"/><path d="M0 450H800"/><path d="M0 500H800"/></g>
+<circle cx="650" cy="70" r="170" fill="rgba(255,255,255,.09)"/><circle cx="120" cy="450" r="130" fill="rgba(255,255,255,.09)"/>
+<polygon points="400,110 650,210 400,310 150,210" fill="#FFFFFF"/><path d="M250 260 V350 C320 400 480 400 550 350 V260 L400 320Z" fill="rgba(255,255,255,.18)"/><path d="M650 210L650 340" stroke="#FFC21A" stroke-width="10" stroke-linecap="round"/><circle cx="650" cy="350" r="16" fill="#FFC21A"/><polygon points="210.0,88.0 214.4,105.6 232.0,110.0 214.4,114.4 210.0,132.0 205.6,114.4 188.0,110.0 205.6,105.6" fill="#FFC21A"/>
+</svg>

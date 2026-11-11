@@ -1,0 +1,5 @@
+/* Styles only for the "projects-clients" page. Global styles are in src/styles.css */
+.logo-tile.gone { display: none; }
+.logo-tile.txt span { font-weight: 700; font-size: 1.05rem; line-height: 1.2; text-align: center; color: var(--ink); }
+.pc-count { margin-top: 10px; color: var(--slate); font-size: .98rem; }
+.pc-more { margin-top: 36px; }

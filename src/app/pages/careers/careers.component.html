@@ -1,0 +1,40 @@
+<!-- PAGE: careers  |  Edit the text, images and links of this page here -->
+<main id="main"><section class="ink phero"><div class="wrap"><p class="crumb"><a href="/">Home</a> / Careers</p><h1>Do the whole job, not a slice of it.</h1><p class="lead">At Phian you see how strategy, content, media and technology fit together, because you work on brands end to end. If you want to grow fast and learn the whole craft, we would like to meet you.</p></div></section><figure class="band"><img src="/assets/images/team.jpg" alt="Young, diverse Indian creative team working together" width="1376" height="768" loading="lazy"></figure>
+<section class="white"><div class="wrap"><h2>Why people join Phian.</h2><div class="why">
+<div><img class="cimg" src="/assets/images/art/brand-vio.svg" alt="" width="800" height="500" loading="lazy"><h3>Whole-brand work</h3><p>Work alongside every pillar, not in a silo.</p></div><div><img class="cimg" src="/assets/images/art/team-gold.svg" alt="" width="800" height="500" loading="lazy"><h3>Real clients</h3><p>Developers, hospitals, hotels and brands you can see in the city.</p></div><div><img class="cimg" src="/assets/images/art/team-ink.svg" alt="" width="800" height="500" loading="lazy"><h3>Modern tools</h3><p>AI-assisted research, production and reporting, used with judgement.</p></div><div><img class="cimg" src="/assets/images/art/media-vio.svg" alt="" width="800" height="500" loading="lazy"><h3>Room to lead</h3><p>Take ownership early, with senior people who teach.</p></div></div></div></section>
+<section><div class="wrap"><h2>Open roles.</h2><p class="lead">Click Apply, fill in your details and attach your resume. It goes straight to our HR team. Office hours: 10:30 AM to 7:30 PM, Monday to Saturday.</p>
+<div class="roles">
+  @for (r of roles; track r[0]) {
+    <div class="role"><h3>{{ r[0] }}</h3><span>{{ r[1] }}</span><span>Nagpur</span><button type="button" class="btn btn-line" (click)="openForm(r[0])">Apply</button></div>
+  }
+</div></div></section></main>
+
+@if (open) {
+<div class="ap" role="dialog" aria-modal="true" aria-labelledby="ap-t" (click)="onBackdrop($event)">
+  <div class="ap-card">
+    <button type="button" class="ap-x" aria-label="Close" (click)="close()">&times;</button>
+    <small class="ap-k">Apply for</small>
+    <h3 id="ap-t">{{ role }}</h3>
+    @if (!ok) {
+    <form class="ap-f" (submit)="send($event)" novalidate>
+      <div class="ap-row">
+        <label>Full name<input name="name" type="text" required autocomplete="name"></label>
+        <label>Phone<input name="phone" type="tel" required autocomplete="tel"></label>
+      </div>
+      <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Short note (optional)<textarea name="message" rows="3"></textarea></label>
+      <label class="ap-file">Resume (PDF, DOC or DOCX, up to 5 MB)
+        <input name="resume" type="file" accept=".pdf,.doc,.docx" required (change)="pick($event)">
+        @if (fileName) { <span class="ap-fn">{{ fileName }}</span> }
+      </label>
+      <input class="ap-hp" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      @if (msg) { <p class="ap-msg" [class.bad]="!ok" role="alert">{{ msg }}</p> @if (fallback) { <a class="btn btn-ink" [attr.href]="mailto()">Email HR directly</a> } }
+      <button class="btn btn-gold" type="submit" [disabled]="busy">{{ busy ? 'Sending...' : 'Send application' }}</button>
+    </form>
+    } @else {
+      <p class="ap-done">{{ msg }}</p>
+      <button class="btn btn-line" type="button" (click)="close()">Close</button>
+    }
+  </div>
+</div>
+}

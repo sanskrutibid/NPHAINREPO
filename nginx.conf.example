@@ -1,0 +1,20 @@
+# VPS with nginx: copy the server block into /etc/nginx/sites-available/phianinfotec and reload nginx.
+server {
+  listen 80;
+  server_name phianinfotec.com www.phianinfotec.com;
+  root /var/www/phian/browser;          # the contents of dist/phian-website/browser
+  index index.html;
+
+  # careers mail server (pm2 start server/apply-server.js --name phian-apply)
+  location /api/ {
+    proxy_pass http://127.0.0.1:3000;
+    client_max_body_size 6m;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+
+  # video: allow seeking / streaming on phones
+  location ~* \.mp4$ { add_header Accept-Ranges bytes; expires 30d; }
+
+  # every other address goes to the app, so /about, /careers, /anything never gives a server 404
+  location / { try_files $uri $uri/ /index.html; }
+}

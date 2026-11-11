@@ -1,0 +1,12 @@
+{
+  "name": "phian-apply-server",
+  "version": "1.0.0",
+  "private": true,
+  "main": "apply-server.js",
+  "scripts": { "start": "node apply-server.js" },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.14"
+  }
+}
